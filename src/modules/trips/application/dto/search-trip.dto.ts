@@ -26,7 +26,7 @@ export class SearchTripDto {
   @IsString()
   @Length(3, 3)
   @Matches(/^[A-Z]{3}$/, {
-    message: 'origin must be a 3-letter uppercase IATA code',
+    message: 'destination must be a 3-letter uppercase IATA code',
   })
   destination: string;
 
