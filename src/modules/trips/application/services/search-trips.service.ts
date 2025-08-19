@@ -1,7 +1,7 @@
 import { Injectable, BadRequestException } from '@nestjs/common';
-import { TripSortService } from '../../domain/services/trip-sort.service';
-import { TripsApiClient } from '../../infrastructure/external/trips-api.client';
-import { Trip } from '../../domain/entities/trip.entity';
+import { TripSortService } from '@trips/domain/services/trip-sort.service';
+import { TripsApiClient } from '@trips/infrastructure/external/trips-api.client';
+import { Trip } from '@trips/domain/entities/trip.entity';
 
 interface SearchTripsParams {
   origin: string;

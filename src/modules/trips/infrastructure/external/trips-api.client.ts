@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
 import { ConfigService } from '@nestjs/config';
 import { firstValueFrom } from 'rxjs';
-import { Trip } from '../../domain/entities/trip.entity';
+import { Trip } from '@trips/domain/entities/trip.entity';
 
 // Types for the external trips API
 interface ExternalTripData {

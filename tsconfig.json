@@ -14,6 +14,15 @@
     "sourceMap": true,
     "outDir": "./dist",
     "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"],
+      "@modules/*": ["src/modules/*"],
+      "@trips/*": ["src/modules/trips/*"],
+      "@trips/domain/*": ["src/modules/trips/domain/*"],
+      "@trips/infrastructure/*": ["src/modules/trips/infrastructure/*"],
+      "@trips/application/*": ["src/modules/trips/application/*"],
+      "@trips/interface/*": ["src/modules/trips/interface/*"]
+    },
     "incremental": true,
     "skipLibCheck": true,
     "strictNullChecks": true,

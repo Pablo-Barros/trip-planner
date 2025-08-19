@@ -1,7 +1,7 @@
 import { Controller, Get, Query, ValidationPipe } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-import { SearchTripsService } from '../application/services/search-trips.service';
-import { SearchTripDto } from '../application/dto/search-trip.dto';
+import { SearchTripsService } from '@trips/application/services/search-trips.service';
+import { SearchTripDto } from '@trips/application/dto/search-trip.dto';
 
 @ApiTags('Trips')
 @Controller('trips')

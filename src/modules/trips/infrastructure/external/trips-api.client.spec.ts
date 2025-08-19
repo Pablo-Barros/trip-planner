@@ -4,7 +4,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { HttpService } from '@nestjs/axios';
 import { ConfigService } from '@nestjs/config';
 import { TripsApiClient } from './trips-api.client';
-import { Trip } from '../../domain/entities/trip.entity';
+import { Trip } from '@trips/domain/entities/trip.entity';
 import { of, throwError } from 'rxjs';
 import { AxiosResponse } from 'axios';
 
