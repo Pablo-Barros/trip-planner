@@ -1,37 +1,82 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
-
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
-
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Trip Planner API built with NestJS. Using MongoDB for data storage and Swagger for API documentation and DDD with clean architecture. Tests are written with Jest.
 
-## Project setup
+## Features
+
+- 🚀 **NestJS Framework** - Modern Node.js framework with TypeScript
+- 🗄️ **MongoDB Integration** - Document-based database with Mongoose
+- 📚 **Swagger Documentation** - Interactive API documentation
+- 🏗️ **Domain Driven Design** - Clean architecture with separated layers
+- 🧪 **Comprehensive Testing** - Unit and integration tests with Jest
+- 🐳 **Docker Support** - Development and production environments
+- 🔍 **Trip Search & Management** - Search, create, list, and delete trips
+- 📊 **Trip Sorting** - Sort by fastest or cheapest options
+
+## API Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/trips/search?origin=SYD&destination=GRU&sortBy=fastest` | Search trips with sorting |
+| `POST` | `/trips` | Create a new trip |
+| `GET` | `/trips` | List all trips |
+| `DELETE` | `/trips/:id` | Delete a trip by ID |
+
+## First steps for project setup
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/trip-planner.git
+   cd trip-planner
+   ```
+
+2. Configure your environment variables in `.env`:
+   ```bash
+   TRIPS_API_URL=your-external-api-url
+   TRIPS_API_KEY=your-api-key
+   NODE_ENV=development
+   MONGO_URI=mongodb://localhost:27017/trip-planner
+   ```
+
+## Technology Stack
+
+- **Framework**: NestJS (Node.js)
+- **Language**: TypeScript
+- **Database**: MongoDB with Mongoose ODM
+- **Testing**: Jest
+- **Documentation**: Swagger/OpenAPI
+- **Containerization**: Docker & Docker Compose
+- **Architecture**: Domain Driven Design (DDD)
+- **Linting**: ESLint
+
+## Project Structure
+
+```
+src/
+├── modules/
+│   └── trips/
+│       ├── application/          # Use cases and DTOs
+│       │   ├── dto/             # Data Transfer Objects
+│       │   └── services/        # Application services
+│       ├── domain/              # Business logic
+│       │   ├── entities/        # Domain entities
+│       │   └── services/        # Domain services
+│       ├── infrastructure/      # External concerns
+│       │   ├── external/        # External API clients
+│       │   └── persistence/     # Database repositories
+│       └── interface/           # Controllers and modules
+├── app.module.ts               # Root module
+└── main.ts                    # Application entry point
+```
+
+## Next steps
+### Project setup with npm
 
 ```bash
 $ npm install
 ```
 
-## Compile and run the project
+### Compile and run the project
 
 ```bash
 # development
@@ -44,7 +89,7 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Run tests
+### Run tests
 
 ```bash
 # unit tests
@@ -57,42 +102,90 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Deployment
+## API Documentation
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+Once the application is running, you can access the Swagger documentation at:
+- **Development**: http://localhost:3000/api
+- **Production**: the docs will not be available
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+## Database Connection
 
+You can use either a local MongoDB instance or a Docker container or mongo atlas free tier for testing purposes.
+
+### MongoDB Compass
+To connect to the Docker MongoDB instance:
+- **Connection String**: `mongodb://localhost:27017/trip-planner`
+- **Host**: `localhost`
+- **Port**: `27017`
+- **Database**: `trip-planner`
+
+## Project setup with Docker
+I made a Dockerfile and docker-compose.yml for easy development and production like environments. 
+
+### **Disclaimer**
+> These are not real world docker files, but they should work for demonstration and easy setup.
+
+### Development
 ```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
+# Building the containers
+$ docker compose -f docker-compose.dev.yml build
+
+# Starting the containers
+$ docker compose -f docker-compose.dev.yml up
+
+# Starting the containers in detached mode
+$ docker compose -f docker-compose.dev.yml up -d
+
+# Stopping the containers
+$ docker compose -f docker-compose.dev.yml down
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+### Production
+```bash
+# Building the containers
+$ docker compose -f docker-compose.prod.yml build
 
-## Resources
+# Starting the containers
+$ docker compose -f docker-compose.prod.yml up
 
-Check out a few resources that may come in handy when working with NestJS:
+# Starting the containers in detached mode
+$ docker compose -f docker-compose.prod.yml up -d
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+# Stopping the containers
+$ docker compose -f docker-compose.prod.yml down
+```
 
-## Support
+## Troubleshooting
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+### Common Issues
 
-## Stay in touch
+1. **Port already in use**
+   ```bash
+   # Check what's using port 3000
+   lsof -i :3000
+   
+   # Kill the process
+   kill -9 <PID>
+   ```
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+2. **MongoDB connection issues**
+   ```bash
+   # Check if MongoDB is running
+   docker compose ps
+   
+   # View MongoDB logs
+   docker compose logs mongo
+   ```
+
+3. **Environment variables not loaded**
+   - Ensure `.env` file exists in the root directory
+   - Check that all required variables are set
+   - Restart the application after changes
 
 ## License
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+This project is [MIT licensed](LICENSE).
+
+## Stay in touch
+
+- Author - pablobarroscordo@gmail.com
